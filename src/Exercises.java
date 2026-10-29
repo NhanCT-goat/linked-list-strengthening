@@ -84,7 +84,7 @@ public class Exercises {
             return Integer.MAX_VALUE;
         }
         int min = head.data;
-        head = head.next;
+        
         while (head != null) {
             if (head.data < min) {
                 min = head.data;
