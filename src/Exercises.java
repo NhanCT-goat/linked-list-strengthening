@@ -12,11 +12,14 @@ public class Exercises {
      * @return the length of the list
      */
     public static int length(ListNode head) {
-        ListNode checkLength = head;
-        int lengthCount = 0;
+        if (head == null) {
+            return 0;
+        }
+        int lengthCount = 1;
+        head = head.next;
         while ( head != null){
             lengthCount++;
-            checkLength = checkLength.next;
+            head = head.next;
         }
         return lengthCount;
     }
@@ -37,7 +40,6 @@ public class Exercises {
     public static ListNode prepend(ListNode head, int toAdd) {
         ListNode newHead = new ListNode(toAdd);
         newHead.next = head;
-         
         return newHead;
     }
 
@@ -54,7 +56,10 @@ public class Exercises {
      * @return the head of the list with the last element removed
      */
     public static ListNode removeLast(ListNode head) {
-      ListNode lastRemove = head;
+     if (head == null || head.next == null) {
+         return null;
+     }
+        ListNode lastRemove = head;
       
       while ( lastRemove.next.next != null ){
         lastRemove = lastRemove.next;
@@ -75,7 +80,18 @@ public class Exercises {
      * @return the minimum value in the list 
      */
     public static int min(ListNode head) {
-        return -1;
+        if (head == null) {
+            return Integer.MAX_VALUE;
+        }
+        int min = head.data;
+        head = head.next;
+        while (head != null) {
+            if (head.data < min) {
+                min = head.data;
+            }
+            head = head.next;
+        }
+        return min;
     }
 
     /**
